@@ -16,14 +16,14 @@ We have to use Bot for Inline Search & Userbot for Searching in Channels. So bot
 
 ## Post Store like :-
 
-{title}
-━━━━━━━━━
-🎭 Genre : 
-💿 Quality : 2160p 
-🔊Audio:-Hindi + English 
-༺━━━━━━━━━━━━━━━━━༻
-{Post}
-{Link}
+- {title}
+- ━━━━━━━━━
+- 🎭 Genre : 
+- 💿 Quality : 2160p 
+- 🔊Audio:-Hindi + English 
+- ༺━━━━━━━━━━━━━━━━━༻
+- {Post}
+- {Link}
 
 
 
