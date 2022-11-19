@@ -14,7 +14,16 @@
 
 We have to use Bot for Inline Search & Userbot for Searching in Channels. So both Bot & Userbot will work together.
 
+## Post Store like :-
 
+{title}
+━━━━━━━━━
+🎭 Genre : 
+💿 Quality : 2160p 
+🔊Audio:-Hindi + English 
+༺━━━━━━━━━━━━━━━━━༻
+{Post}
+{Link}
 
 
 
