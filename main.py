@@ -61,7 +61,7 @@ async def inline_handlers(_, event: Message):
             answers += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n\n**'
     try:
         msg = await event.reply_text(answers)
-        await asyncio.sleep(65)
+        await asyncio.sleep(300)
         await event.delete()
         await msg.delete()
     except:
