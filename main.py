@@ -63,8 +63,6 @@ async def inline_handlers(_, event: Message):
         reply_markup=InlineKeyboardMarkup(
     [
 	[
-            InlineKeyboardButton("❤ Donation Link ❤", url='https://upier.vercel.app/pay/tgnvs@axisbank')
-	],[
 	    InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
 	]
     ]
