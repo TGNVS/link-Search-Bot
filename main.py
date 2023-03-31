@@ -25,13 +25,12 @@ User = Client(
 
 @Bot.on_message(filters.private & filters.command("start"))
 async def start_handler(_, event: Message):
-	await event.reply_photo("https://graph.org/file/2af22b9d619409353804a.jpg",
+	await event.reply_photo("https://graph.org/file/bc64d49095ab1763cb531.jpg",
                                 caption=Config.START_MSG.format(event.from_user.mention),
                                 reply_markup=InlineKeyboardMarkup([
-					[InlineKeyboardButton('❤ Donation Link', url='https://upier.vercel.app/pay/tgnvs@axisbank')],
-					[InlineKeyboardButton("𝙼𝚘𝚟𝚒𝚎 𝙲𝚑𝚊𝚗𝚗𝚊𝚕", url="https://t.me/nvsmovielink")],
-					[InlineKeyboardButton("Donation", callback_data="Help_msg"),
-                                        InlineKeyboardButton("About", callback_data="About_msg")]
+					[InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")],
+					[InlineKeyboardButton("❤ Donation Link ❤", callback_data="Help_msg"),
+                                        InlineKeyboardButton("♻ About ♻", callback_data="About_msg")]
 				]))
 
 @Bot.on_message(filters.private & filters.command("help"))
@@ -39,9 +38,9 @@ async def help_handler(_, event: Message):
 
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
-		[InlineKeyboardButton('❤ Donation Link', url='https://upier.vercel.app/pay/tgnvs@axisbank')
-	 ],[InlineKeyboardButton("𝙼𝚘𝚟𝚒𝚎 𝙲𝚑𝚊𝚗𝚗𝚊𝚕", url="https://t.me/nvsmovielink"), 
-             InlineKeyboardButton("𝙰𝚋𝚘𝚞𝚝", callback_data="About_msg")]
+		[InlineKeyboardButton('❤ Donation Link ❤', url='https://upier.vercel.app/pay/tgnvs@axisbank')
+	 ],[InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink"), 
+             InlineKeyboardButton("♻ 𝙰𝚋𝚘𝚞𝚝 ♻", callback_data="About_msg")]
         ])
     )
 
@@ -49,7 +48,7 @@ async def help_handler(_, event: Message):
 async def inline_handlers(_, event: Message):
     if event.text == '/start':
         return
-    answers = f'**📂 Results For ➠ {event.text} \n\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n➠ Join @tgnvs\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+    answers = f'**📂 Results For ➠ {event.text} \n➠ Type Only Movie Name With Correct Spelling.✍️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     async for message in User.search_messages(chat_id=Config.CHANNEL_ID, limit=50, query=event.text):
         if message.text:
             thumb = None
@@ -58,10 +57,20 @@ async def inline_handlers(_, event: Message):
             if "|||" in message.text:
                 f_text = message.text.split("|||", 1)[0]
                 msg_text = message.text.html.split("|||", 1)[0]
-            answers += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n\n**'
+            answers += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n⚠ Link Will Auto Deleted After Some Time ⏰...⚠\n\n**'
     try:
-        msg = await event.reply_text(answers)
-        await asyncio.sleep(300)
+        msg = await event.reply_text((answers),
+        reply_markup=InlineKeyboardMarkup(
+    [
+	[
+            InlineKeyboardButton("❤ Donation Link ❤", url='https://upier.vercel.app/pay/tgnvs@axisbank')
+	],[
+	    InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
+	]
+    ]
+     )
+ )
+        await asyncio.sleep(900)
         await event.delete()
         await msg.delete()
     except:
@@ -78,13 +87,11 @@ async def button(bot, cmd: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton('❤ Donation Link', url='https://upier.vercel.app/pay/tgnvs@axisbank')
+						InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
 					],
 					[
-						InlineKeyboardButton("𝙼𝚘𝚟𝚒𝚎 𝙲𝚑𝚊𝚗𝚗𝚊𝚕", url="https://t.me/nvsmovielink")
-					],
-					[
-						InlineKeyboardButton("Home", callback_data="gohome")
+						InlineKeyboardButton("❤ Donation Link ❤", callback_data="Help_msg"),
+						InlineKeyboardButton("💠 Home 💠", callback_data="gohome")
 					]
 				]
 			),
@@ -97,14 +104,11 @@ async def button(bot, cmd: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-					InlineKeyboardButton('❤ Donation Link', url='https://upier.vercel.app/pay/tgnvs@axisbank')
-					],
-					[
-					InlineKeyboardButton("𝙼𝚘𝚟𝚒𝚎 𝙲𝚑𝚊𝚗𝚗𝚊𝚕", url="https://t.me/nvsmovielink")
+					InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
 					], 
                                         [
-					InlineKeyboardButton("Home", callback_data="gohome"),
-					InlineKeyboardButton("About", callback_data="About_msg")
+					InlineKeyboardButton("💠 Home 💠", callback_data="gohome"),
+					InlineKeyboardButton("♻ About ♻", callback_data="About_msg")
 					]
 				]
 			),
@@ -116,15 +120,12 @@ async def button(bot, cmd: CallbackQuery):
 			disable_web_page_preview=True,
 			reply_markup=InlineKeyboardMarkup(
 				[
-                                        [
-					InlineKeyboardButton('❤ Donation Link', url='https://upier.vercel.app/pay/tgnvs@axisbank')
+					[
+					InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
 					],
 					[
-					InlineKeyboardButton("𝙼𝚘𝚟𝚒𝚎 𝙲𝚑𝚊𝚗𝚗𝚊𝚕", url="https://t.me/nvsmovielink")
-					],
-					[
-					InlineKeyboardButton("Donation", callback_data="Help_msg"),
-					InlineKeyboardButton("About", callback_data="About_msg")
+					InlineKeyboardButton("❤ Donation Link ❤", callback_data="Help_msg"),
+					InlineKeyboardButton("♻ About ♻", callback_data="About_msg")
 					]
 				]
 			),
